@@ -23,4 +23,3 @@ def format_linter_report(linter_report: dict) -> list:
              "status": format_single_linter_file(key, value).get("status")}
             for (key, value) in linter_report.items()
             ]
-
