@@ -1,6 +1,5 @@
 from __future__ import print_function
 
-
 def format_linter_error(error: dict) -> dict:
     return {"line": error.get("line_number"),
             "column": error.get("column_number"),
@@ -11,8 +10,8 @@ def format_linter_error(error: dict) -> dict:
 def format_single_linter_file(file_path: str, errors: list) -> dict:
     return {"errors": [format_linter_error(error)
         for error in errors], "path": file_path,
-        "status": "failed"} if errors else \
-        {"path": file_path, "status": "passed"}
+        "status": "failed"} if errors else {
+        "path": file_path, "status": "passed"}
 
 
 def format_linter_report(linter_report: dict) -> list:
@@ -20,3 +19,4 @@ def format_linter_report(linter_report: dict) -> list:
              "path": key,
              "status": format_single_linter_file(key, value).get("status")}
             for (key, value) in linter_report.items()]
+
